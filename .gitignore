@@ -1,4 +1,8 @@
 env
 .editorconfig
 .vscode
+dag_backend/db.sqlite3
+**/dag_backend/customer/migrations/*
+dag_backend/customer/migrations/__pycache__/
+
 
