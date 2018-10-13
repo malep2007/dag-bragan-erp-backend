@@ -1,25 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.deconstruct import deconstructible
 
 import datetime
-
-
-class Customer(models.Model):
-    business_name = models.CharField(max_length=50, blank=True, null=True)
-    location = models.CharField(max_length=100, null=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    middle_name = models.CharField(max_length=50, blank=True, null=True)
-    phone_number = models.CharField(max_length=12)
-
-    def __str__(self):
-        """check for name that exists and return that name"""
-        self.name = "{0} {1}".format(self.first_name, self.last_name)
-        if self.business_name:
-            return self.business_name
-        else:
-            return self.name
-
 
 class Inquiry(models.Model):
     JOB_TYPES = (
@@ -27,14 +10,17 @@ class Inquiry(models.Model):
         ('T', 'Technical')
     )
 
-    @staticmethod
-    def generate_inquiry_number(self):
+    @property
+    def gen_inq_number(self):
         time = datetime.datetime.now()
-        return "INQ/{0}/{1}/{2}".format(
-            time.year, time.month, time.date
-        )
+        self.inq_number = "INQ/{}/{}/{}/{}".format(time.year, time.month, time.day, self.id)
+        inq = Inquiry.objects.get(id=self.id)
+        inq.inq_number = self.inq_number
+        inq.save()
+        return self.inq_number
 
-    name = models.ForeignKey(Customer, models.CASCADE)
+
+    # customer_name = models.ForeignKey(Customer, models.CASCADE)
     job_type = models.CharField(
         max_length=20,
         choices=JOB_TYPES,
@@ -46,9 +32,35 @@ class Inquiry(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     inq_number = models.CharField(
         max_length=20,
-        default='generate_inquiry_number',
-        editable=False
+        editable=False,
+        null=True,
     )
+    approve_job = models.BooleanField(default=False, null=True)
+
+
 
     def __str__(self):
-        return "{}".format(self.inq_number)
+        return "{}".format(self.gen_inq_number)
+
+
+class Customer(models.Model):
+    business_name = models.CharField(max_length=50, blank=True, null=True)
+    location = models.CharField(max_length=100, null=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    middle_name = models.CharField(max_length=50, blank=True, null=True)
+    phone_number = models.CharField(max_length=12)
+    inquiry = models.OneToOneField(Inquiry, models.CASCADE, null=True, editable=False)
+
+    @property
+    def full_name(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
+    def __str__(self):
+        """check for name that exists and return that name"""
+        if self.business_name:
+            return self.business_name
+        else:
+            return self.full_name
+
+
