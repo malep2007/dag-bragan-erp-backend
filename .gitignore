@@ -3,8 +3,11 @@
 .vscode
 
 dag_backend/db.sqlite3
-**/dag_backend/__pycache__/
-**/dag_backend/customer/migrations/*
-/dag_backend/customer/migrations/__pycache__/
+**/dag_backend/__pycache__/*.pyc
+**/dag_backend/customer/__pycache__/
+**/dag_backend/customer/migrations/
+dag_backend/customer/migrations/__pycache__/*.cpython*
 
-
+$ git rm --cached /dag_backend/customer/migrations/__pycache__/*
+$ git rm --cached /dag_backend/customer/__pycache__/*
+git rm --cached /dag_backend/db.sqlite3
