@@ -50,7 +50,7 @@ class Customer(models.Model):
     last_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True, null=True)
     phone_number = models.CharField(max_length=12)
-    inquiry = models.OneToOneField(Inquiry, models.CASCADE, null=True, editable=False)
+    inquiry = models.OneToOneField(Inquiry, models.CASCADE, null=True, editable=True)
 
     @property
     def full_name(self):
