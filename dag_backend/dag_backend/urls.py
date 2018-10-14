@@ -19,6 +19,7 @@ from customer.admin import my_site
 
 urlpatterns = [
     path('customer/',include('customer.urls')),
+    path('customer/inspection', include('inspection.urls')),
     # path('admin/', admin.site.urls),
     path('admin/', my_site.urls),
 
