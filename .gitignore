@@ -2,7 +2,7 @@
 .editorconfig
 .vscode
 
-dag_backend/db.sqlite3
+/dag_backend/db.sqlite3
 **/dag_backend/__pycache__/*.pyc
 **/dag_backend/customer/__pycache__/
 **/dag_backend/customer/migrations/
