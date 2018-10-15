@@ -16,15 +16,18 @@ class InquiryAdmin(admin.ModelAdmin):
     list_editable=('approve_job',)
     search_fields = ('inq_number',)
 
-class MyAdminSite(AdminSite):
-    """Custom site configuration for admin panel"""
-    site_header = 'Dag & Bragan'
+admin.site.register(Customer, CustomerAdmin)
+admin.site.register(Inquiry, InquiryAdmin)
 
-#create a my_site urls path to use in urls configuration
-my_site = MyAdminSite(name = 'dag-admin')
+# class MyAdminSite(AdminSite):
+#     """Custom site configuration for admin panel"""
+#     site_header = 'Dag & Bragan'
 
-#register your models on the customised admin site
-my_site.register(Customer, CustomerAdmin)
-my_site.register(Inquiry, InquiryAdmin)
+# #create a my_site urls path to use in urls configuration
+# my_site = MyAdminSite(name = 'dag-admin')
+
+# #register your models on the customised admin site
+# my_site.register(Customer, CustomerAdmin)
+# my_site.register(Inquiry, InquiryAdmin)
 
 # Register your models here.
