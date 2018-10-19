@@ -16,6 +16,7 @@ class InquiryAdmin(admin.ModelAdmin):
     list_editable=('approve_job',)
     search_fields = ('inq_number',)
 
+
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Inquiry, InquiryAdmin)
 

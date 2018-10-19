@@ -2,4 +2,7 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Working")
+    data = {
+        'title': 'Customer Dashboard',
+    }
+    return render(request, 'customer/index.html', context=data)
