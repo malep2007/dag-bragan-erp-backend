@@ -7,15 +7,15 @@ services:
 
 before_script:
   - psql -c "create database users;" -U postgres
-  - cd dag_backend/
+#   - cd dag_backend/
   - python dag_backend/manage.py makemigrations customer
   - python dag_backend/manage.py migrate
 
 install:
   - pip install -r requirements.txt
 
-script:
-  - coverage run --source=authors/ manage.py test
+# script:
+#   - coverage run --source=authors/ manage.py test
 
 after_success:
   - coveralls
