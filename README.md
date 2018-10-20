@@ -8,6 +8,7 @@
     </tr>
 </table>
 
+[![Build Status](https://travis-ci.com/malep2007/dag-bragan-erp-backend.svg?branch=master)](https://travis-ci.com/malep2007/dag-bragan-erp-backend)
 
 
 
