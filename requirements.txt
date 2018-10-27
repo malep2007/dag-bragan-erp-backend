@@ -8,5 +8,6 @@ mccabe==0.6.1
 pycodestyle==2.4.0
 pylint==2.1.1
 pytz==2018.5
+PyYAML==3.13
 six==1.11.0
 wrapt==1.10.11
