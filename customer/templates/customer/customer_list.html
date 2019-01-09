@@ -26,12 +26,12 @@
                         <td>{{ customer.full_name }}</td>
                         <td>{{ customer.location }}</td>
                         <td>
-                            <a href="{% url 'customer:detail' pk=customer.pk %}">
+                            <a class="alert-primary" href="{% url 'customer:detail' pk=customer.pk %}">
                                 <i class="fas fa-edit"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="{% url 'customer:delete' pk=customer.pk %}">
+                            <a class="alert-danger" href="{% url 'customer:delete' pk=customer.pk %}">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
@@ -43,9 +43,6 @@
     <div class="col">
         <a href="{% url 'customer:add' %}"">
             <button id="addCustomerBtn" class="btn btn-primary mr-5">Add Customer</button>
-        </a>
-        <a href ="{% url 'home' %}">
-            <button class="btn btn-danger ml-5">Delete Customer</button>
         </a>
     </div>
 {% endblock content %}
