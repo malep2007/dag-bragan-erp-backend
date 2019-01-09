@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">INQ</th>
+            <th scope="col">Business</th>
+            <th scope="col">Contact Person</th>
+            <th scope="col">Location</th>
+            </tr>
+        </thead>
+        {% if customers %}
+            {% for customer in customers %}
+                <tbody>
+                    <tr>
+                        <td scope="row">{{ customer.inquiry.inq_number }}</td>
+                        <td>
+                            {% if customer.business_name %}
+                                {{ customer.business_name }}
+                            {% else %}
+                                Personal Arrangement
+                            {% endif %}
+                        </td>
+                        <td>{{ customer.full_name }}</td>
+                        <td>{{ customer.location }}</td>
+                        <td>
+                            <a href="{% url 'customer:detail' pk=customer.pk %}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                 </tbody>
+            {% endfor %}
+        {% endif %}
+    </table>
+    <div class="col">
+        <a href="{% url 'customer:customer_add' %}"">
+            <button id="addCustomerBtn" class="btn btn-primary mr-5">Add Customer</button>
+        </a>
+        <a href ="{% url 'home' %}">
+            <button class="btn btn-danger ml-5">Delete Customer</button>
+        </a>
+    </div>
+{% endblock content %}

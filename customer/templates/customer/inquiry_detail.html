@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+{{ title }}
+{% endblock title %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h3>{{ inquiry.inq_number }}</h3>
+    <form action="#" method="POST">
+        {% for field in form %}
+            <div class="form-group">
+                <div>
+                    {{ field.label}}
+                </div>
+                <div>
+                    {{ field|add_class:"form-control"}}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="col">
+            <button class="btn btn-primary mr-5">Submit</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </form>
+{% endblock content %}
