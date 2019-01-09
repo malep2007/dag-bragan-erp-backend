@@ -59,7 +59,7 @@
 #         return self.retrieve(request, *args, **kwargs)
 
 from django.views import generic
-from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect, get_object_or_404
 from .models import Customer, Inquiry
 from .forms import InquiryForm, CustomerForm
 
@@ -92,11 +92,11 @@ def customer_detail(request, pk):
         })
     else:
         form = CustomerForm(initial=initial_data)
-        return render(request, "customer/customer_detail.html", {
-            "form": form,
-            "customer": customer,
-            "title": "Customer Detail"
-        })
+    return render(request, "customer/customer_detail.html", {
+        "form": form,
+        "customer": customer,
+        "title": "Customer Detail"
+    })
 
 def customer_add(request):
     form = CustomerForm()
@@ -108,7 +108,13 @@ def customer_add(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             form.save()
+            Customer.objects.create(**request.POST)
             return HttpResponseRedirect("customer: index")
     else:
         form = CustomerForm()
     return render(request, "customer/customer_add.html", context)
+
+def customer_delete(request, pk):
+    customer = Customer.objects.get(pk=pk)
+    customer.delete()
+    return redirect("customer:index")
