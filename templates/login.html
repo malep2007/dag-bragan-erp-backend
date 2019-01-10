@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %} {{ title }}
+{% endblock title %}
+{% block content %}
+    <div class="border border-primary rounded p-4 mx-auto">
+        <form method="POST" action="#">
+        {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <div>
+                        {{ field.label }}
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="form-group">
+                <button class="btn btn-primary">Login</button>
+            </div>
+            <div class="form-group">
+                <label>Remember me </label> <input type="checkbox"/>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
