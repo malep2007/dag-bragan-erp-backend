@@ -59,16 +59,22 @@
 #         return self.retrieve(request, *args, **kwargs)
 
 from django.views import generic
+from django.conf import settings
 from django.shortcuts import render, redirect, reverse, HttpResponseRedirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import Customer, Inquiry
 from .forms import InquiryForm, CustomerForm
 
 
 def customer_list(request):
-    customers = Customer.objects.all()
-    context = {"customers": customers, "title":"Customer List"}
-    return render(request, "customer/customer_list.html", context)
+    if not request.user.is_authenticated:
+        return redirect('/login/'))
+    else:
+        customers = Customer.objects.all()
+        context = {"customers": customers, "title":"Customer List"}
+        return render(request, "customer/customer_list.html", context)
 
+@login_required(login_url="/login/")
 def customer_detail(request, pk):
     customer = Customer.objects.get(pk=pk)
     initial_data = {
