@@ -19,7 +19,7 @@ before_script:
   - python manage.py migrate
 
 script:
-  - coverage run --source=customer dag_backend/manage.py test
+  - coverage run --source=customer manage.py test
 
 after_success:
   - coveralls
