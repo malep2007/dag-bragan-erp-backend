@@ -12,7 +12,8 @@ install:
   - pip install coveralls
 
 before_script:
-  - psql -c "create database users;" -U postgres
+  - psql -c "create database dag_db_dev;" -U postgres
+
 #   - cd dag_backend/
   - python manage.py makemigrations customer
   - python manage.py migrate

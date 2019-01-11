@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'dag_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dag_and_bragan',
+        'NAME': 'dag_db_dev',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': 'localhost',
