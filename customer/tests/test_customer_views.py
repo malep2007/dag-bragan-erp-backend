@@ -10,7 +10,7 @@ class TestCustomerView(TestCase):
         self.response = self.client.get(reverse('customer:index'))
         self.assertTrue(self.response.status_code, 200)
 
-    def test_customer_list_template_used(self):
-        self.assertTemplateUsed(self.client.get(reverse('customer:index')), "customer/customer_list.html")
+
+
 
 

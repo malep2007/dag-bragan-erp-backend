@@ -2,3 +2,5 @@
 .vscode
 /.idea
 .idea/*
+.coverage
+customer/tests/__pycache__/*
