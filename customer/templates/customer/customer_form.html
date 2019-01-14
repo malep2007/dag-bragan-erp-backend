@@ -1,11 +1,12 @@
 {% extends "layout.html" %}
 {% block title %}
-{{ title }}
+Create Customer Inquiry
 {% endblock title %}
 {% load widget_tweaks %}
 
 {% block content %}
-    <h3>{{ title }}</h3>
+    <h3>Create Customer Inquiry</h3>
+    <hr/>
     <form action="#" method="POST">
     {% csrf_token %}
         {% for field in form %}
