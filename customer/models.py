@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.deconstruct import deconstructible
 
@@ -62,5 +63,8 @@ class Customer(models.Model):
             return self.business_name
         else:
             return self.full_name
+
+    def get_absolute_url(self):
+        return reverse("customer:detail", kwargs={"pk": self.pk})
 
 
