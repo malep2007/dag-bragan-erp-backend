@@ -1,5 +1,5 @@
 from django.views import generic
-from django.conf import settings
+from backends.backend import Backend
 from django.shortcuts import render, redirect, reverse, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import Customer, Inquiry
