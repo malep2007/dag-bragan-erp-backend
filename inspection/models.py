@@ -86,3 +86,7 @@ class PropertyDetail(models.Model):
 
     def __str__(self):
         return "{0} {1}".format(self.customer, self.property_type)
+
+    def get_absolute_url(self):
+        return reverse("inspection:detail", kwargs={"pk": self.pk})
+

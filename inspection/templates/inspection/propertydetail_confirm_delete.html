@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+Confim Delete
+{% endblock title %}
+{% block content %}
+<h2>{{ property_detail }}</h2>
+<hr/>
+<p class="danger">Delete {{ property_detail }}?</p>
+    <div class="form-group">
+        <button class="btn bg-danger">Yes</button>
+    </div>
+
+
+{% endblock content %}

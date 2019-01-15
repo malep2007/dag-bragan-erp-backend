@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for field in form %}
+    <h3>{{ field.customer }}</h3>
+        <div>
+            <label>{{ field.label }}</label>: {{ field|title }}
+        </div>
+    {% endfor %}
+{% endblock content %}
