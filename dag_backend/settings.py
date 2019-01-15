@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'dag_db_dev',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'ec2-107-22-252-66.compute-1.amazonaws.com',
         'PORT': '',
     }
 }
