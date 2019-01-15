@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'dag_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dag_db_dev',
+        'NAME': 'd11jppd6gf0ecj',
         'USER': 'wwqbkxqsrgnwkq',
         'PASSWORD': '5d1826a82751c764b0d956d8fe98ad7748600fde88ad9a560dc27f6fd868f4eb',
         'HOST': 'ec2-107-22-252-66.compute-1.amazonaws.com',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
